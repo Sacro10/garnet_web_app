@@ -35,7 +35,7 @@ export const educationalCards: ResourceCard[] = [
   {
     id: "common-genetic-kidney-diseases",
     title: "Common Genetic Kidney Diseases",
-    subtitle: "Inherited kidney disease overview",
+    subtitle: "Short overviews of most common rare diseases",
     icon: BookText,
     route: "/doctor/dashboard/resource/common-genetic-kidney-diseases",
   },
@@ -48,8 +48,8 @@ export const educationalCards: ResourceCard[] = [
   },
   {
     id: "case-studies",
-    title: "Case Studies",
-    subtitle: "Real-world nephrology examples",
+    title: "Patients' Stories",
+    subtitle: "Hear the patient's voices",
     icon: Film,
     route: "/doctor/dashboard/resource/case-studies",
   },
@@ -76,7 +76,7 @@ export const educationalCards: ResourceCard[] = [
   },
   {
     id: "renal-patient-organizations",
-    title: "Renal Patient Organizations",
+    title: "Patients' Organizations",
     subtitle: "Patient support and referral resources",
     icon: BookOpen,
     route: "/doctor/dashboard/resource/renal-patient-organizations",
@@ -116,11 +116,11 @@ export const practicalCards: ResourceCard[] = [
 
 export const modeSummary: Record<ResourceMode, { title: string; description: string }> = {
   educational: {
-    title: "Educational",
+    title: "Educational Materials",
     description: "Guidelines, videos, training, and literature",
   },
   practical: {
-    title: "Practical",
+    title: "Practical Tools",
     description: "Clinical screening, counseling referral, and direct test ordering",
   },
 };

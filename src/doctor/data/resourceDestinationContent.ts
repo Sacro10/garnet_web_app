@@ -22,6 +22,7 @@ export type OrganizationLinkItem = {
   label: string;
   domainLabel: string;
   url: string;
+  description?: string;
 };
 
 export type VideoLinkItem = {
@@ -141,36 +142,54 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
     mode: "educational",
     title: "Why Genetic Testing in Nephrology?",
     context:
-      "A concise overview of why genetic testing matters in kidney care, from diagnosis to family guidance.",
+      "Genetic testing plays a critical role in nephrology because 10-20% of adults with chronic kidney disease and up to 70% of children with chronic kidney disease have a monogenic cause that can be identified with a genetic test. Despite this, nephrology currently lags behind other specialties in implementing genetic testing.",
     sections: [
       {
-        title: "Improve Diagnostic Precision",
+        title: "Improved Diagnostic Accuracy",
         subtitle:
-          "Genetic testing can uncover monogenic causes of kidney disease that may not be obvious from labs, biopsy, or imaging alone.",
+          "Identifying a genetic cause can clarify the exact cause of CKD, especially for unclear or atypical presentations.",
         bullets: [
-          "Clarifies unexplained CKD, cystic disease, hematuria, tubulopathies, and syndromic presentations.",
-          "Reduces diagnostic delay and helps avoid repeated low-yield workups.",
-          "Supports more confident classification when the phenotype is atypical or overlapping.",
+          "Helps end patients' diagnostic odyssey.",
+          "Can reduce uncertainty and guilt for patients and families.",
+          "Supports more confident classification when phenotype, biopsy, imaging, or family history are atypical or overlapping.",
         ],
       },
       {
-        title: "Guide Clinical Management",
+        title: "Family Counseling and Cascade Testing",
         subtitle:
-          "A molecular diagnosis can change how patients are monitored, treated, and counseled over time.",
+          "A molecular diagnosis enables assessment of recurrence risk, screening of relatives, and earlier detection of at-risk family members.",
         bullets: [
-          "Refines prognosis and expected disease progression.",
-          "Informs medication, surveillance, transplant, and subspecialty referral decisions.",
-          "Highlights extra-renal risks that may need screening or preventive care.",
+          "Supports cascade testing for relatives.",
+          "Can allow early surveillance and treatment to delay ESKD.",
+          "Improves family counseling, reproductive counseling, and risk communication.",
         ],
       },
       {
-        title: "Support Families and Future Planning",
+        title: "Transplant Planning",
         subtitle:
-          "Results often matter beyond the individual patient and can shape counseling for relatives and potential donors.",
+          "Genetic findings can guide donor selection and reduce the risk of transmitting hereditary disease.",
         bullets: [
-          "Enables cascade testing for at-risk family members.",
-          "Improves reproductive counseling and inheritance discussions.",
-          "Helps with living donor evaluation and family-centered care planning.",
+          "Helps evaluate biologically related living donor candidates.",
+          "Can prevent use of donors who may carry the same familial kidney disease.",
+          "Supports family-centered transplant planning.",
+        ],
+      },
+      {
+        title: "Therapeutic Decision-Making",
+        subtitle:
+          "Certain genetic diagnoses influence treatment choices and may affect eligibility for targeted therapies when available.",
+        bullets: [
+          "Can refine prognosis and expected disease progression.",
+          "May affect surveillance, medication, transplant, and subspecialty referral decisions.",
+          "Can identify extra-renal risks that need screening or preventive care.",
+        ],
+      },
+      {
+        title: "Additional References",
+        bullets: [
+          "Genetic Testing in the Management of Adult CKD — https://www.ovid.com/jnls/jasn/fulltext/10.1681/asn.0000000913~genetic-testing-in-the-management-of-adult-ckd",
+          "The Clinical Utility of Genetic Testing in the Diagnosis and Management of Adults with Chronic Kidney Disease — https://www.ovid.com/jnls/jasn/fulltext/10.1681/asn.0000000000000249~the-clinical-utility-of-genetic-testing-in-the-diagnosis-and",
+          "Genetic evaluation of living kidney donor candidates: A review and recommendations for best practices — https://www.amjtransplant.org/article/S1600-6135(23)00305-2/fulltext",
         ],
       },
     ],
@@ -204,9 +223,9 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
   "case-studies": {
     id: "case-studies",
     mode: "educational",
-    title: "Case Studies",
+    title: "Patients' Stories",
     context:
-      "Personal stories from people and families affected by kidney disease and genetic testing experiences.",
+      "Hear the patient's voices.",
     sections: [],
     videoLinks: [
       {
@@ -312,50 +331,52 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
   "renal-patient-organizations": {
     id: "renal-patient-organizations",
     mode: "educational",
-    title: "Renal Patient Organizations",
+    title: "Patients' Organizations",
     context:
       "Patient advocacy organizations and a referral guide for rare kidney diseases.",
     sections: [],
     organizationLinks: [
       {
-        label: "National Kidney Foundation (NKF)",
-        domainLabel: "kidney.org",
-        url: "https://www.kidney.org/",
+        label: "Alport Syndrome Foundation",
+        domainLabel: "alportsyndrome.org",
+        url: "https://alportsyndrome.org/",
+        description: "Supports patients and families affected by Alport spectrum disorders through education, advocacy, and research support.",
       },
       {
         label: "American Kidney Fund (AKF)",
         domainLabel: "kidneyfund.org",
         url: "https://www.kidneyfund.org/",
-      },
-      {
-        label: "National Organization for Rare Disorders (NORD)",
-        domainLabel: "rarediseases.org",
-        url: "https://rarediseases.org/",
-      },
-      {
-        label: "PKD Foundation",
-        domainLabel: "pkdcure.org",
-        url: "https://pkdcure.org/",
-      },
-      {
-        label: "Alport Syndrome Foundation",
-        domainLabel: "alportsyndrome.org",
-        url: "https://alportsyndrome.org/",
+        description: "Provides patient education, financial assistance, and advocacy for people with kidney disease.",
       },
       {
         label: "Dent Disease Foundation",
         domainLabel: "dentdisease.org",
         url: "https://www.dentdisease.org/",
+        description: "Offers disease-specific information, community support, and research advocacy for Dent disease.",
+      },
+      {
+        label: "National Kidney Foundation (NKF)",
+        domainLabel: "kidney.org",
+        url: "https://www.kidney.org/",
+        description: "National kidney health organization offering patient education, professional resources, and advocacy.",
       },
       {
         label: "NephCure Kidney International",
         domainLabel: "nephcure.org",
         url: "https://nephcure.org/",
+        description: "Focuses on rare protein-spilling kidney diseases, including patient support, research, and clinical trial education.",
       },
       {
-        label: "Rare Kidney Disease Foundation (AKTKD)",
+        label: "PKD Foundation",
+        domainLabel: "pkdcure.org",
+        url: "https://pkdcure.org/",
+        description: "Supports people affected by polycystic kidney disease through education, advocacy, and research funding.",
+      },
+      {
+        label: "Rare Kidney Disease Foundation (ADTKD)",
         domainLabel: "rarekidney.org",
         url: "https://www.rarekidney.org/",
+        description: "Provides information and community support for Autosomal Dominant Tubulointerstitial Kidney Disease (ADTKD).",
       },
     ],
     featuredLink: {
@@ -685,32 +706,119 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
     id: "common-genetic-kidney-diseases",
     mode: "educational",
     title: "Common Genetic Kidney Diseases",
-    context: "Overview of common inherited kidney disease categories.",
+    context: "Short overviews of most common rare diseases.",
     sections: [],
     diseaseLinks: [
       {
-        label:
-          "Autosomal Dominant Polycystic Kidney Disease (ADPKD) / Autosomal Recessive Polycystic Kidney Disease (ARPKD).",
+        label: "ADPKD",
         topicId: "adpkd",
       },
-      { label: "Alport syndrome", topicId: "alport" },
+      { label: "Branchio-Oto-Renal Syndrome (EYA1)", topicId: "bor" },
+      { label: "Collagenopathies: Alport Spectrum Disorder", topicId: "alport" },
+      { label: "Dent disease", topicId: "dent" },
+      { label: "Fabry disease (GLA)", topicId: "fabry" },
+      { label: "Gitelman and Bartter", topicId: "tubulopathies" },
       {
-        label: "Congenital Anomalies of the Kidney and Urinary Tract (CAKUT).",
-        topicId: "cakut",
+        label: "HNF1B-related Autosomal Dominant Tubulointerstitial Kidney Disease",
+        topicId: "hnf1b-adtkd",
       },
       {
-        label: "Nephrotic syndrome (Steroid-Resistant Nephrotic Syndrome )",
-        topicId: "srns",
+        label: "Nephronophthisis-Related Ciliopathies",
+        topicId: "ciliopathies",
       },
-      { label: "Tubulopathies (Gitelman, Bartter).", topicId: "tubulopathies" },
-      { label: "Ciliopathies", topicId: "ciliopathies" },
-      { label: "Fabry disease", topicId: "fabry" },
-      { label: "Mitochondrial kidney disorders", topicId: "mitochondrial" },
+      {
+        label: "PAX2-Related Disorder (also known as Renal Coloboma Syndrome and Papillorenal syndrome)",
+        topicId: "pax2",
+      },
     ],
     geneticDiseaseTopics: {
+      bor: {
+        id: "bor",
+        title: "Branchio-Oto-Renal Syndrome (EYA1)",
+        primarySections: [],
+        featureCards: [
+          {
+            title: "Genetics",
+            bullets: ["Most commonly associated with EYA1; other genes include SIX1 and SIX5."],
+          },
+          {
+            title: "Clinical Features",
+            bullets: ["Branchial arch anomalies", "Ear malformations or hearing loss", "Renal anomalies including CAKUT spectrum findings"],
+          },
+          {
+            title: "Why It's Important",
+            bullets: ["Supports renal surveillance", "Guides hearing evaluation", "Enables family screening and counseling"],
+          },
+        ],
+        referenceLabel: "GeneReviews: Branchiootorenal Spectrum Disorder.",
+        referenceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK1380/",
+      },
+      dent: {
+        id: "dent",
+        title: "Dent Disease",
+        primarySections: [],
+        featureCards: [
+          {
+            title: "Genetics",
+            bullets: ["X-linked disorder most often caused by CLCN5; OCRL can also be implicated."],
+          },
+          {
+            title: "Clinical Features",
+            bullets: ["Low-molecular-weight proteinuria", "Hypercalciuria", "Nephrocalcinosis, kidney stones, and progressive CKD"],
+          },
+          {
+            title: "Why It's Important",
+            bullets: ["Avoids misclassification as primary glomerular disease", "Supports family testing", "Guides monitoring for stones and CKD progression"],
+          },
+        ],
+        referenceLabel: "GeneReviews: Dent Disease.",
+        referenceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK99494/",
+      },
+      "hnf1b-adtkd": {
+        id: "hnf1b-adtkd",
+        title: "HNF1B-related Autosomal Dominant Tubulointerstitial Kidney Disease",
+        primarySections: [],
+        featureCards: [
+          {
+            title: "Genetics",
+            bullets: ["Autosomal dominant HNF1B variants or deletions."],
+          },
+          {
+            title: "Clinical Features",
+            bullets: ["Kidney cysts or CAKUT features", "Hypomagnesemia or hyperuricemia", "Diabetes or pancreatic, liver, or genital tract findings may occur"],
+          },
+          {
+            title: "Why It's Important",
+            bullets: ["Explains syndromic kidney presentations", "Guides family screening", "Prompts evaluation for extra-renal features"],
+          },
+        ],
+        referenceLabel: "GeneReviews: HNF1B-Related Disease.",
+        referenceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK532299/",
+      },
+      pax2: {
+        id: "pax2",
+        title: "PAX2-Related Disorder",
+        primarySections: [],
+        featureCards: [
+          {
+            title: "Also Known As",
+            bullets: ["Renal Coloboma Syndrome", "Papillorenal syndrome"],
+          },
+          {
+            title: "Clinical Features",
+            bullets: ["Renal hypodysplasia or other CAKUT findings", "Optic nerve coloboma or other ocular findings", "Progressive CKD can occur"],
+          },
+          {
+            title: "Why It's Important",
+            bullets: ["Supports ophthalmology referral", "Guides family screening", "Clarifies CAKUT presentations with eye findings"],
+          },
+        ],
+        referenceLabel: "GeneReviews: PAX2-Related Disorder.",
+        referenceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK1451/",
+      },
       adpkd: {
         id: "adpkd",
-        title: "1. Autosomal Dominant Polycystic Kidney Disease (ADPKD)",
+        title: "ADPKD",
         primarySections: [
           {
             title: "Indications for Testing",
@@ -719,15 +827,16 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
               "Negative family history but imaging suggests ADPKD",
               "Living kidney donor evaluation",
               "Young patients where imaging is ambiguous",
+              "Family planning, including PGT-M, CVS, and amniocentesis",
             ],
           },
           {
             title: "Clinical Importance",
             bullets: [
-              "PKD1 variants correlate with more rapid progression",
+              "PKD1 loss-of-function variants correlate with more rapid progression",
               "Enables cascade testing",
               "Essential for donor screening",
-              "Improves prognostic accuracy (Mayo classification + genotype)",
+              "Improves prognostic accuracy (PROPKD)",
             ],
           },
         ],
@@ -735,8 +844,9 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
           {
             title: "Genetics",
             bullets: [
-              "Common genes: PKD1 (majority of cases), PKD2 (second most)",
-              "Less common genes: IFT140, GANAB, HNF1B, ALG8, ALG9, PKHD1, and others",
+              "PKD1 accounts for about 78% of ADPKD cases.",
+              "PKD2 accounts for about 15% of ADPKD cases.",
+              "Less common genes include IFT140, GANAB, HNF1B, ALG8, ALG9, PKHD1, and others.",
             ],
           },
           {
@@ -746,8 +856,8 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
           {
             title: "Why It's Important",
             bullets: [
-              "Common genetic cause of adult-onset kidney failure",
-              "Aids diagnosis, family screening, and early management",
+              "Aids diagnosis and early management",
+              "Supports family screening",
               "Impacts treatment decisions (e.g. Tolvaptan, imaging)",
             ],
           },
@@ -755,26 +865,15 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
             title: "Clinical Features",
             bullets: [
               "Bilateral kidney cysts",
-              "Hypertension (common)",
-              "Liver cysts, aneurysms, etc.",
-            ],
-          },
-          {
-            title: "Example Cases",
-            bullets: [
-              "PKD1 loss-of-function variant: high penetrance, early CKD",
-              "PKD2 missense variant: variable penetrance",
-              "Variants in IFT140, GANAB, etc.: some had cystic kidney disease",
+              "Hypertension",
+              "Liver cysts",
+              "Intracranial aneurysms in selected higher-risk families",
             ],
           },
         ],
         referenceLabel:
           "Harris PC, Torres VE. Polycystic Kidney Disease, Autosomal Dominant. GeneReviews.",
         referenceUrl: "https://www.ncbi.nlm.nih.gov/books/NBK1246/",
-        nextTopicLink: {
-          label: "2. Autosomal Recessive Polycystic Kidney Disease (ARPKD).",
-          topicId: "arpkd",
-        },
       },
       arpkd: {
         id: "arpkd",
@@ -808,42 +907,36 @@ export const resourceDestinationContent: Record<string, ResourceDestination> = {
       },
       alport: {
         id: "alport",
-        title: "ALPORT SYNDROME: CLINICAL OVERVIEW & GENETICS",
+        title: "Collagenopathies: Alport Spectrum Disorder",
         primarySections: [],
         featureCards: [
           {
-            title: "Genetics & Inheritance Patterns",
+            title: "Genetics and Inheritance Patterns",
             bullets: [
-              "Most common gene: COL4A5 (a5 chain of type IV collagen)",
-              "Less common genes: COL4A3 and COL4A4",
-              "X-linked (XLAS): most common (~60%-80%); males generally more severe",
-              "Autosomal recessive (ARAS): ~10%-15%; pathogenic variants in both copies of COL4A3 or COL4A4",
-              "Autosomal dominant (ADAS): ~20%-30%; milder phenotypes with a single variant",
-              "Digenic inheritance: rare but increasingly recognized",
+              "COL4A5 causes X-linked Alport syndrome; males are often more severely affected.",
+              "COL4A3 and COL4A4 can cause autosomal recessive or autosomal dominant Alport spectrum disease.",
+              "Genotype-phenotype correlation helps estimate risk for kidney failure, hearing loss, and ocular findings.",
+              "A licensed figure can be added here once provided; do not copy restricted figures from ResearchGate without permission.",
             ],
           },
           {
             title: "Why It's Important to Know",
             bullets: [
-              "Most common genetic kidney disease / hereditary nephritis",
-              "Early diagnosis enables genetic counseling and family screening",
-              "Earlier intervention (e.g., ACE inhibitors to delay CKD progression) and kidney donation planning",
+              "A genetic diagnosis enables family screening and early treatment of affected family members to delay ESKD",
+              "Earlier intervention, including ACE inhibitors to delay CKD progression",
+              "Living kidney donation planning",
+              "Family planning, including PGT-M, CVS, and amniocentesis",
+              "Referral for hearing testing and ophthalmology evaluation",
             ],
           },
           {
-            title: "Clinical Features / Presentation",
+            title: "Clinical Features",
             bullets: [
-              "Kidney: persistent microscopic hematuria, progressive proteinuria, chronic kidney disease (CKD) to ESRD",
+              "Kidney: persistent microscopic hematuria",
+              "Kidney: progressive proteinuria and CKD that can progress to ESKD",
+              "Kidney biopsy: thin basement membranes, lamellation, splitting, and basket-weave appearance of the glomerular basement membrane",
               "Ears: sensorineural hearing loss (especially XLAS males)",
               "Eyes: anterior lenticonus and retinal flecks",
-            ],
-          },
-          {
-            title: "Age of Onset & Clinical Examples",
-            bullets: [
-              "Classic XLAS male child: persistent microscopic hematuria; teenage onset of hearing loss",
-              "Adult with digenic variants: hematuria noted in early adulthood; ESRD/hypertension by age 30; pathogenic variants in COL4A3 and COL4A5",
-              "Autosomal dominant presentation: middle-aged adult with isolated hematuria and milder progression",
             ],
           },
         ],

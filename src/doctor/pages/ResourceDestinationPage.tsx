@@ -103,7 +103,7 @@ const whyGeneticTestingBenefits = [
   {
     label: "Improved diagnostic accuracy",
     description:
-      "Helps clarify the exact cause of CKD, especially in patients with unclear or atypical presentations.",
+      "Helps clarify the exact cause of CKD, especially in unclear or atypical presentations, and can end patients' diagnostic odyssey.",
   },
   {
     label: "Better risk stratification and prognosis",
@@ -113,12 +113,12 @@ const whyGeneticTestingBenefits = [
   {
     label: "Family counseling & cascade testing",
     description:
-      "Enables assessment of recurrence risk, screening of relatives, and early detection in at-risk family members.",
+      "Enables recurrence risk assessment, relative screening, early detection of at-risk family members, and family planning conversations.",
   },
   {
     label: "Transplant planning",
     description:
-      "Genetic findings can guide donor selection and avoid transmitting hereditary disease.",
+      "Genetic findings can guide living donor selection and avoid transmitting hereditary disease.",
   },
   {
     label: "Therapeutic decision-making",
@@ -845,48 +845,10 @@ export default function ResourceDestinationPage() {
     "Compassionate care for patients who qualify",
     "Interest-free payment plans",
   ];
-  const risksLearningObjectives = [
-    "Understand the scope and limits of GINA in nephrology genetics.",
-    "Clarify the medical team's role in family communication and cascade testing.",
-    "Recognize how genetic testing discussions can stigmatize populations if framed poorly.",
-    "Avoid using social constructs as shortcuts for deciding who gets tested.",
-  ];
   const risksClinicalActions = [
     "Review family history, age at onset, and extra-renal findings before discussing testing.",
     "Use pre-test counseling to address discrimination fears, family implications, and test fit.",
     "Offer genetic testing based on clinical indication rather than assumptions about ancestry, interest, or finances.",
-  ];
-  const risksCaseSummaries = [
-    {
-      title: "Case 1: Impact on children",
-      summary:
-        "A patient with cystic kidney disease worries that a genetic diagnosis could affect her children's future insurability.",
-      takeaways: [
-        "Review GINA protections and the major gaps around life, disability, and long-term care insurance.",
-        "Discuss testing in children only when it changes current medical care.",
-        "Use genetic counseling to support best-interest and privacy discussions with families.",
-      ],
-    },
-    {
-      title: "Case 2: Family disclosure",
-      summary:
-        "A patient with an inherited diagnosis is uncertain about how and whether to share the result with relatives.",
-      takeaways: [
-        "Cascade testing depends heavily on how results are communicated to at-risk relatives.",
-        "HIPAA allows providers to support patient-led disclosure and direct outreach with authorization.",
-        "Genetic counselors can guide family conversations and practical cascade testing steps.",
-      ],
-    },
-    {
-      title: "Case 3: Equity and ancestry",
-      summary:
-        "A patient with rapidly progressive FSGS raises questions about ancestry, APOL1 relevance, and equitable test offering.",
-      takeaways: [
-        "Social constructs should not decide who gets offered testing.",
-        "Ancestry may affect interpretation, but modern testing strategies are generally ancestry agnostic.",
-        "Clinicians should avoid assumptions about interest, affordability, or psychological readiness.",
-      ],
-    },
   ];
 
   const getHostLabel = (url: string) => {
@@ -1661,7 +1623,7 @@ Referring clinician
                   return;
                 }
 
-                navigate("/doctor/dashboard");
+                navigate(`/doctor/dashboard/${detail.mode}`);
               }}
               className="rounded-full border border-[#c3d6d9] bg-white px-4 py-2 text-sm font-semibold text-[#00687b] transition-colors hover:bg-[#cfe7ea]"
             >
@@ -2023,23 +1985,30 @@ Referring clinician
                   className="text-center text-2xl md:text-4xl text-black"
                   style={{ fontFamily: "Georgia, serif" }}
                 >
-                  Renal Patient Organizations
+                  {detail.title}
                 </h3>
 
                 <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(280px,0.95fr)] lg:items-center">
                   <div className="space-y-4">
                     {detail.organizationLinks.map((organization) => (
-                      <div key={organization.url} className="text-base leading-relaxed text-black/85 md:text-lg">
-                        <span>{organization.label}</span>
-                        <span> - </span>
-                        <a
-                          href={organization.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[#6a74c9] underline underline-offset-2 hover:text-cyan-700"
-                        >
-                          {organization.domainLabel}
-                        </a>
+                      <div key={organization.url} className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-base leading-relaxed text-black/85 md:text-lg">
+                        <div>
+                          <span className="font-semibold">{organization.label}</span>
+                          <span> - </span>
+                          <a
+                            href={organization.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#6a74c9] underline underline-offset-2 hover:text-cyan-700"
+                          >
+                            {organization.domainLabel}
+                          </a>
+                        </div>
+                        {organization.description ? (
+                          <p className="mt-1 text-sm leading-relaxed text-black/65 md:text-base">
+                            {organization.description}
+                          </p>
+                        ) : null}
                       </div>
                     ))}
                   </div>
@@ -2656,6 +2625,14 @@ Referring clinician
                   </div>
                 ) : (
                   <div className="space-y-4">
+                    <h3 className="text-3xl text-black md:text-4xl" style={{ fontFamily: "Georgia, serif" }}>
+                      {detail.title}
+                    </h3>
+                    <p className="max-w-4xl text-base leading-relaxed text-black/75 md:text-lg">
+                      Most genetic diseases causing CKD are extremely rare. There are hundreds of such genetic
+                      diseases, and together they cause about 10% of CKD cases. Most of these diseases are diagnosed
+                      only with a genetic test. We are only providing here a short highlight of some of those diseases.
+                    </p>
                     {detail.diseaseLinks.map((disease) => (
                       <button
                         key={disease.label}
@@ -2856,22 +2833,27 @@ Referring clinician
                 >
                   <div className="grid gap-6 md:grid-cols-[1.1fr_0.9fr] md:items-center">
                     <div>
-                      <p className="text-sm uppercase tracking-[0.22em] text-cyan-700">Ethics and Implementation</p>
+                      <p className="text-sm uppercase tracking-[0.22em] text-cyan-700">Protections against genetic discrimination</p>
                       <h3 className="mt-3 text-2xl md:text-4xl text-black" style={{ fontFamily: "Georgia, serif" }}>
-                        Key risks of not offering genetic testing thoughtfully
+                        GINA, HIPAA, and testing children
                       </h3>
                       <p className="mt-3 max-w-3xl text-base leading-relaxed text-black/75 md:text-lg">
-                        The source CME deck frames this topic around discrimination risk, family communication duties,
-                        and equity in test offering. The central message is not just to offer testing, but to offer it
-                        with informed, clinically grounded, and non-stigmatizing communication.
+                        This section summarizes protections and boundaries that should be discussed when genetic testing
+                        is offered in nephrology, including anti-discrimination protections, information sharing, and
+                        pediatric testing ethics.
                       </p>
 
                       <div className="mt-6 rounded-[24px] border border-black/10 bg-cyan-50 p-5">
                         <h4 className="text-xl text-black" style={{ fontFamily: "Georgia, serif" }}>
-                          Learning objectives
+                          Core points
                         </h4>
                         <ul className="mt-4 space-y-3 text-black/75">
-                          {risksLearningObjectives.map((objective) => (
+                          {[
+                            "GINA is a US federal law enacted in 2008 that protects against genetic discrimination in employment and health insurance.",
+                            "GINA does not cover life insurance, disability insurance, or long-term care insurance.",
+                            "HIPAA supports careful, privacy-preserving information sharing; family communication should generally be patient-mediated or authorized.",
+                            "Children should generally not be tested for adult-onset genetic risk unless the result can affect their current medical care.",
+                          ].map((objective) => (
                             <li key={objective} className="rounded-2xl bg-white px-4 py-3">
                               {objective}
                             </li>
@@ -2890,36 +2872,21 @@ Referring clinician
                   </div>
                 </motion.article>
 
-                <div className="grid gap-6">
-                  {risksCaseSummaries.map((item, index) => (
-                    <motion.article
-                      key={item.title}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.04, duration: 0.26 }}
-                      className="rounded-[30px] border border-black/10 bg-white/92 p-5 shadow-[0_10px_24px_rgba(0,0,0,0.08)] md:p-7"
-                    >
-                      <div className="grid gap-5 md:grid-cols-[0.9fr_1.4fr]">
-                        <div>
-                          <h4 className="text-2xl text-black" style={{ fontFamily: "Georgia, serif" }}>
-                            {item.title}
-                          </h4>
-                          <p className="mt-3 text-black/75">{item.summary}</p>
-                        </div>
-                        <div className="rounded-[24px] border border-black/10 bg-cyan-50 p-4">
-                          <p className="text-sm uppercase tracking-[0.18em] text-cyan-700">Clinical takeaways</p>
-                          <ul className="mt-4 space-y-3 text-black/75">
-                            {item.takeaways.map((takeaway) => (
-                              <li key={takeaway} className="rounded-2xl bg-white px-4 py-3">
-                                {takeaway}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </motion.article>
-                  ))}
-                </div>
+                <motion.article
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.26 }}
+                  className="rounded-[30px] border border-black/10 bg-white/92 p-5 shadow-[0_10px_24px_rgba(0,0,0,0.08)] md:p-7"
+                >
+                  <p className="text-sm uppercase tracking-[0.22em] text-cyan-700">Risks of not offering genetic testing</p>
+                  <h3 className="mt-3 text-2xl md:text-4xl text-black" style={{ fontFamily: "Georgia, serif" }}>
+                    The doctor's legal responsibilities
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-black/75 md:text-lg">
+                    Placeholder for the forthcoming legal-responsibility content. This section is intentionally not
+                    filled with generated legal analysis until the source material is provided.
+                  </p>
+                </motion.article>
 
                 <motion.article
                   initial={{ opacity: 0, y: 12 }}
@@ -3203,8 +3170,8 @@ Referring clinician
               >
                 <p className="max-w-4xl text-lg leading-relaxed text-black/85 md:text-[1.45rem]">
                   Genetic testing plays a critical role in nephrology because a significant proportion of
-                  chronic kidney disease (CKD), 10-20% of adults and up to 70% of affected children, has an
-                  underlying genetic cause. Despite this, nephrology currently lags behind other specialties
+                  chronic kidney disease (CKD), 10-20% of adults with CKD and up to 70% of children with CKD, has a
+                  monogenic cause that can be identified with a genetic test. Despite this, nephrology currently lags behind other specialties
                   in implementing genetic testing. Identifying a genetic cause of kidney disease provides
                   major clinical benefits, including:
                 </p>
@@ -3221,19 +3188,40 @@ Referring clinician
                 </div>
 
                 <div className="mt-8 border-t border-black/10 pt-5">
-                  <p className="text-sm uppercase tracking-wide text-cyan-800">Reference</p>
-                  <a
-                    href="https://pubmed.ncbi.nlm.nih.gov/39033956/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-2 block text-base leading-relaxed text-cyan-900 underline decoration-cyan-400 underline-offset-4"
-                  >
-                    Franceschini N, Feldman DL, Berg JS, Besse W, Chang AR, Dahl NK, Gbadegesin R,
-                    Pollak MR, Rasouly HM, Smith RJH, Winkler CA, Gharavi AG; NKF Genetic Testing
-                    Working Group. Advancing Genetic Testing in Kidney Diseases: Report From a National
-                    Kidney Foundation Working Group. Am J Kidney Dis. 2024 Dec;84(6):751-766.
-                    PMID: 39033956.
-                  </a>
+                  <p className="text-sm uppercase tracking-wide text-cyan-800">References</p>
+                  <div className="mt-2 space-y-3 text-base leading-relaxed text-cyan-900">
+                    {[
+                      {
+                        label:
+                          "Franceschini N, Feldman DL, Berg JS, et al. Advancing Genetic Testing in Kidney Diseases: Report From a National Kidney Foundation Working Group. Am J Kidney Dis. 2024.",
+                        href: "https://pubmed.ncbi.nlm.nih.gov/39033956/",
+                      },
+                      {
+                        label: "Genetic Testing in the Management of Adult CKD.",
+                        href: "https://www.ovid.com/jnls/jasn/fulltext/10.1681/asn.0000000913~genetic-testing-in-the-management-of-adult-ckd",
+                      },
+                      {
+                        label:
+                          "The Clinical Utility of Genetic Testing in the Diagnosis and Management of Adults with Chronic Kidney Disease.",
+                        href: "https://www.ovid.com/jnls/jasn/fulltext/10.1681/asn.0000000000000249~the-clinical-utility-of-genetic-testing-in-the-diagnosis-and",
+                      },
+                      {
+                        label:
+                          "Genetic evaluation of living kidney donor candidates: A review and recommendations for best practices.",
+                        href: "https://www.amjtransplant.org/article/S1600-6135(23)00305-2/fulltext",
+                      },
+                    ].map((reference) => (
+                      <a
+                        key={reference.href}
+                        href={reference.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block underline decoration-cyan-400 underline-offset-4"
+                      >
+                        {reference.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </motion.article>
 
@@ -3263,11 +3251,11 @@ Referring clinician
                         key={card.title}
                         className={`rounded-[28px] border-2 bg-white/96 p-5 shadow-[0_8px_20px_rgba(0,0,0,0.05)] ${card.borderClassName} ${card.positionClassName}`}
                       >
-                        <div className={`mb-3 inline-flex rounded-full bg-slate-50 p-3 ${card.iconClassName}`}>
-                          <CardIcon className="h-6 w-6" strokeWidth={1.8} />
+                        <div className={`mb-4 inline-flex rounded-full bg-slate-50 p-4 ${card.iconClassName}`}>
+                          <CardIcon className="h-9 w-9" strokeWidth={1.8} />
                         </div>
-                        <h4 className="text-lg uppercase tracking-[0.03em] text-[#34538f]">{card.title}</h4>
-                        <div className="mt-2 space-y-1 text-sm leading-relaxed text-[#44587a]">
+                        <h4 className="text-xl uppercase tracking-[0.03em] text-[#34538f]">{card.title}</h4>
+                        <div className="mt-3 space-y-1 text-base leading-relaxed text-[#44587a]">
                           {card.lines.map((line) => (
                             <p key={`${card.title}-${line}`}>{line}</p>
                           ))}

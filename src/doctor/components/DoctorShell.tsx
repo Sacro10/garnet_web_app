@@ -59,7 +59,7 @@ export function DoctorHeader({ activeMode, backLabel, backTo, title = "Clinician
                   : "text-[#00687b] hover:bg-[#cfe7ea] hover:text-[#16323b]"
               }`}
             >
-              Educational
+              Educational Materials
             </button>
             <button
               type="button"
@@ -70,7 +70,7 @@ export function DoctorHeader({ activeMode, backLabel, backTo, title = "Clinician
                   : "text-[#3f4650] hover:bg-[#f4d8d2] hover:text-[#16323b]"
               }`}
             >
-              Practical
+              Practical Tools
             </button>
           </div>
 
@@ -189,12 +189,12 @@ export function DoctorFooter() {
             <ul className="mt-4 space-y-1.5">
               <li>
                 <Link className="inline-block rounded-md py-1.5 text-[1.02rem] underline-offset-4 transition-colors hover:text-[#e6f0f2] hover:underline" to="/doctor/dashboard/educational">
-                  Educational
+                  Educational Materials
                 </Link>
               </li>
               <li>
                 <Link className="inline-block rounded-md py-1.5 text-[1.02rem] underline-offset-4 transition-colors hover:text-[#e6f0f2] hover:underline" to="/doctor/dashboard/practical">
-                  Practical
+                  Practical Tools
                 </Link>
               </li>
               <li>

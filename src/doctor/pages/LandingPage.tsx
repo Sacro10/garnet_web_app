@@ -41,14 +41,14 @@ export default function LandingPage() {
 
           <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
             <ModePanelCard
-              title="Educational"
+              title="Educational Materials"
               description="Guidelines, videos, and literature."
               icon={BookOpen}
               accent="teal"
               onClick={() => goToMode("educational")}
             />
             <ModePanelCard
-              title="Practical"
+              title="Practical Tools"
               description="Workflows, referrals, and templates."
               icon={MapPinned}
               accent="coral"

@@ -1,12 +1,8 @@
 import {
   ArrowRight,
-  BookOpen,
   HeartHandshake,
   Info,
   Landmark,
-  ListChecks,
-  MessagesSquare,
-  ShieldCheck,
   Stethoscope,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
@@ -15,69 +11,7 @@ import { Card } from '../components/Card'
 import { HeroVideo } from '../components/HeroVideo'
 import type { Tint } from '../components/IconChip'
 import { IconChip } from '../components/IconChip'
-import { Section } from '../components/Section'
 import { TrustBadge } from '../components/TrustBadge'
-
-const HERO_FEATURES: Array<{ icon: LucideIcon; tint: Tint; label: string; tooltip: string }> = [
-  {
-    icon: BookOpen,
-    tint: 'brand',
-    label: 'Guides to genetic testing',
-    tooltip: 'Short reads on what testing involves.',
-  },
-  {
-    icon: ListChecks,
-    tint: 'accent',
-    label: 'A short question check',
-    tooltip: 'See if testing may be worth discussing.',
-  },
-  {
-    icon: MessagesSquare,
-    tint: 'plum',
-    label: 'Help talking with your care team',
-    tooltip: 'Questions to ask your doctor or a genetic counselor.',
-  },
-  {
-    icon: ShieldCheck,
-    tint: 'brand',
-    label: 'Privacy, cost, and your rights',
-    tooltip: 'Plain answers about protections and cost.',
-  },
-]
-
-/**
- * Hero card row. Previously the description lived in a hover/tap tooltip,
- * but its absolute positioning overlapped the row below it. Now the
- * description is always visible as a caption, and hovering the row just
- * shifts its colors slightly — no popup, nothing to overlap.
- */
-function HeroFeature({
-  icon,
-  tint,
-  label,
-  tooltip,
-}: {
-  icon: LucideIcon
-  tint: Tint
-  label: string
-  tooltip: string
-}) {
-  return (
-    <li className="group flex items-start gap-4 rounded-xl p-1.5 -m-1.5 transition-colors duration-150 hover:bg-wash">
-      <IconChip
-        icon={icon}
-        tint={tint}
-        className="size-11 shrink-0 rounded-xl transition-colors duration-150"
-      />
-      <div>
-        <p className="text-[1.05rem] leading-snug font-semibold text-ink transition-colors duration-150 group-hover:text-brand-strong">
-          {label}
-        </p>
-        <p className="mt-0.5 text-[0.92rem] leading-snug text-muted">{tooltip}</p>
-      </div>
-    </li>
-  )
-}
 
 const DOCTOR_APP_URL = '/doctor/dashboard'
 
@@ -123,7 +57,7 @@ export function Home() {
               id="hero-heading"
               className="mt-6 font-display text-[2.3rem] leading-[1.12] font-semibold text-ink sm:text-5xl sm:leading-[1.08] lg:text-[3.35rem]"
             >
-              Could genetic testing help you or your family understand kidney disease?
+              Could genetic testing help you, your family, or your patient understand kidney disease?
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-body sm:text-xl">
               GARNET helps people with kidney disease learn about genetic testing and prepare to
@@ -150,55 +84,36 @@ export function Home() {
               aria-hidden="true"
               className="absolute -bottom-12 -left-10 size-56 rounded-full bg-accent/25 blur-3xl"
             />
-            <Card className="relative bg-gradient-to-br from-surface to-wash-warm p-6 sm:p-8">
-              <p className="font-display text-xl font-semibold text-ink">
-                What you’ll find on GARNET
-              </p>
-              <ul className="mt-6 flex flex-col gap-5">
-                {HERO_FEATURES.map((feature) => (
-                  <HeroFeature key={feature.label} {...feature} />
-                ))}
-              </ul>
-              <div className="mt-7 flex items-center gap-3 border-t border-line pt-5 text-[0.95rem] font-medium text-muted">
-                <HeartHandshake aria-hidden="true" className="size-5 shrink-0 text-accent" />
-                Made for patients and families.
-              </div>
-            </Card>
+            <div className="grid gap-4">
+              {PATHS.map((path) => (
+                <Card
+                  key={path.title}
+                  className="relative flex scale-100 flex-col p-5 transition-all duration-200 motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.01] hover:shadow-lift sm:p-6"
+                >
+                  <div className="flex items-start gap-4">
+                    <IconChip icon={path.icon} tint={path.tint} className="size-[3.25rem] shrink-0" />
+                    <div>
+                      <p className="text-[0.78rem] font-bold tracking-[0.14em] uppercase text-brand">
+                        {path.eyebrow}
+                      </p>
+                      <h2 className="mt-2 font-display text-[1.55rem] leading-snug font-semibold text-ink sm:text-[1.85rem]">
+                        {path.title}
+                      </h2>
+                      <p className="mt-2 text-[0.98rem] leading-relaxed text-body">{path.text}</p>
+                    </div>
+                  </div>
+                  <div className="mt-5">
+                    <Button href={path.href} variant="secondary" size="md" className="w-full">
+                      {path.cta}
+                      <ArrowRight aria-hidden="true" className="size-4.5" />
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
-
-      {/* ============ 2. Role decision cards ============ */}
-      <Section
-        id="learn"
-        eyebrow="Choose your path"
-        title="Choose where to begin"
-        intro="Select the side of GARNET that matches how you will use the site."
-      >
-        <div className="grid gap-5 sm:gap-6 md:grid-cols-2">
-          {PATHS.map((path) => (
-            <Card
-              key={path.title}
-              className="flex scale-100 flex-col p-6 transition-all duration-200 motion-safe:hover:-translate-y-1 motion-safe:hover:scale-[1.015] hover:shadow-lift sm:p-8 lg:p-10"
-            >
-              <IconChip icon={path.icon} tint={path.tint} className="size-[3.25rem]" />
-              <p className="mt-6 text-[0.9rem] font-bold tracking-[0.14em] uppercase text-brand">
-                {path.eyebrow}
-              </p>
-              <h3 className="mt-3 font-display text-[1.8rem] leading-snug font-semibold text-ink sm:text-[2.1rem]">
-                {path.title}
-              </h3>
-              <p className="mt-3 text-[1.02rem] leading-relaxed text-body">{path.text}</p>
-              <div className="mt-auto pt-7">
-                <Button href={path.href} variant="secondary" size="md" className="w-full">
-                  {path.cta}
-                  <ArrowRight aria-hidden="true" className="size-4.5" />
-                </Button>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </Section>
 
       {/* ============ 3. Call to action ============ */}
       <section id="check" aria-labelledby="check-heading" className="py-16 sm:py-24">

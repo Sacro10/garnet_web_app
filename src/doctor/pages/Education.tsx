@@ -174,9 +174,9 @@ const references: ReferenceItem[] = [
 
 const renalPatientOrganizations: RenalPatientOrganization[] = [
   {
-    label: "National Kidney Foundation (NKF)",
-    domainLabel: "kidney.org",
-    url: "https://www.kidney.org/",
+    label: "Alport Syndrome Foundation",
+    domainLabel: "alportsyndrome.org",
+    url: "https://alportsyndrome.org/",
   },
   {
     label: "American Kidney Fund (AKF)",
@@ -184,24 +184,14 @@ const renalPatientOrganizations: RenalPatientOrganization[] = [
     url: "https://www.kidneyfund.org/",
   },
   {
-    label: "National Organization for Rare Disorders (NORD)",
-    domainLabel: "rarediseases.org",
-    url: "https://rarediseases.org/",
-  },
-  {
-    label: "PKD Foundation",
-    domainLabel: "pkdcure.org",
-    url: "https://pkdcure.org/",
-  },
-  {
-    label: "Alport Syndrome Foundation",
-    domainLabel: "alportsyndrome.org",
-    url: "https://alportsyndrome.org/",
-  },
-  {
     label: "Dent Disease Foundation",
     domainLabel: "dentdisease.org",
     url: "https://www.dentdisease.org/",
+  },
+  {
+    label: "National Kidney Foundation (NKF)",
+    domainLabel: "kidney.org",
+    url: "https://www.kidney.org/",
   },
   {
     label: "NephCure Kidney International",
@@ -209,7 +199,12 @@ const renalPatientOrganizations: RenalPatientOrganization[] = [
     url: "https://nephcure.org/",
   },
   {
-    label: "Rare Kidney Disease Foundation (AKTKD)",
+    label: "PKD Foundation",
+    domainLabel: "pkdcure.org",
+    url: "https://pkdcure.org/",
+  },
+  {
+    label: "Rare Kidney Disease Foundation (ADTKD)",
     domainLabel: "rarekidney.org",
     url: "https://www.rarekidney.org/",
   },
@@ -519,7 +514,7 @@ export default function Education() {
                 className="mt-1 text-xl md:text-2xl text-[#102347]"
                 style={{ fontFamily: "Georgia, serif" }}
               >
-                Renal Patient Organizations
+                Patients' Organizations
               </h2>
             </div>
             <span className="hidden sm:inline-flex rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-xs text-[#42639a]">
